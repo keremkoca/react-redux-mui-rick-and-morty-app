@@ -5,6 +5,7 @@ const abortController = new AbortController();
 
 axiosInstance.interceptors.response.use(
   (response) => response,
+
   (error) => {
     if (error.message) abortController.abort(error);
     return (
@@ -19,6 +20,7 @@ axiosInstance.interceptors.request.use(
     config.signal = abortController.signal;
     return config;
   },
+
   (error) => {
     return Promise.reject(error);
   }
