@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const slice = createSlice({
-  name: "chars",
+  name: "episodes",
   initialState,
   reducers: {
     startLoading(state) {
@@ -18,11 +18,11 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    getCharsSucces(state, action) {
+    getEpSucces(state, action) {
       state.isLoading = false;
       state.data = action.payload;
     },
-    getMoreCharsSucces(state, action) {
+    getMoreEpSucces(state, action) {
       state.isLoading = false;
       state.data = [...state.data, ...action.payload];
     },
@@ -31,27 +31,27 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const getAllChars = () => {
+export const getAllEPs = () => {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
       const response = await axios.get(
-        "https://rickandmortyapi.com/api/character"
+        "https://rickandmortyapi.com/api/location"
       );
-      dispatch(slice.actions.getCharsSucces(response.data.results));
+      dispatch(slice.actions.getEpSucces(response.data.results));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
   };
 };
-export const getMoreChars = (pageNum) => {
+export const getMoreEPs = (pageNum) => {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
       const response = await axios.get(
-        `https://rickandmortyapi.com/api/character/?page=${pageNum}`
+        `https://rickandmortyapi.com/api/episode/?page=${pageNum}`
       );
-      dispatch(slice.actions.getMoreCharsSucces(response.data.results));
+      dispatch(slice.actions.getMoreEpSucces(response.data.results));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }

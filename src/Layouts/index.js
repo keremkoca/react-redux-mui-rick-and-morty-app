@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-
 import Button from "@mui/material/Button";
 
 const DefaultAppBar = () => {
@@ -23,7 +22,6 @@ const DefaultAppBar = () => {
           <Box
             sx={{
               justifyContent: "space-evenly",
-
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
             }}
@@ -47,7 +45,7 @@ const DefaultAppBar = () => {
 
 export default function Layout({ children }) {
   return (
-    <Box sx={{ backgroundColor: "primary" }}>
+    <Box>
       <DefaultAppBar />
       {children}
     </Box>

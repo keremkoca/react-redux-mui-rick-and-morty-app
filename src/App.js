@@ -1,17 +1,20 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 import React from "react";
-import { useSelector } from "react-redux";
 import Home from "./pages/Home";
 import Characters from "./pages/Characters";
 import Locations from "./pages/Locations";
 import Episodes from "./pages/Episodes";
 import { Routes, Route } from "react-router";
-import { green, purple } from "@mui/material/colors";
-import Layout from "./Layouts";
+import { green, purple, grey } from "@mui/material/colors";
+import Layout from "./layouts";
+import { CssBaseline } from "@mui/material";
 
 const theme = createTheme({
   palette: {
+    background: {
+      default: grey[900],
+    },
     primary: {
       main: purple[500],
     },
@@ -22,9 +25,9 @@ const theme = createTheme({
 });
 
 function App() {
-  console.log(useSelector((state) => state));
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
